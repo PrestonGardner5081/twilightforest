@@ -23,6 +23,7 @@ import twilightforest.init.TFItems;
 
 public class TransformationPowderCategory implements IRecipeCategory<TransformationRecipe> {
 	public static final RecipeType<TransformationRecipe> TRANSFORMATION = RecipeType.create(TwilightForestMod.ID, "transformation_powder", TransformationRecipe.class);
+	private final IDrawable background;
 	private final IDrawable icon;
 	private final IDrawable arrow;
 	private final IDrawable slot;
@@ -31,6 +32,7 @@ public class TransformationPowderCategory implements IRecipeCategory<Transformat
 	private final EntityRenderer entityRenderer = new EntityRenderer(32);
 
 	public TransformationPowderCategory(IGuiHelper helper) {
+		this.background = helper.createBlankDrawable(RecipeViewerConstants.GENERIC_RECIPE_WIDTH, RecipeViewerConstants.GENERIC_RECIPE_HEIGHT);
 		this.arrow = helper.drawableBuilder(TwilightForestMod.getGuiTexture("transformation_arrow.png"), 0, 0, 23, 30).setTextureSize(23, 30).build();
 		this.doubleArrow = helper.drawableBuilder(TwilightForestMod.getGuiTexture("transformation_double_arrow.png"), 0, 0, 23, 30).setTextureSize(23, 30).build();
 		this.slot = helper.drawableBuilder(TwilightForestMod.getGuiTexture("big_slot.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
@@ -46,6 +48,11 @@ public class TransformationPowderCategory implements IRecipeCategory<Transformat
 	@Override
 	public Component getTitle() {
 		return this.localizedName;
+	}
+
+	@Override
+	public IDrawable getBackground() {
+		return this.background;
 	}
 
 	@Override

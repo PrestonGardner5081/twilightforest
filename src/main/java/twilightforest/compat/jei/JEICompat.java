@@ -26,7 +26,6 @@ import twilightforest.compat.jei.renderers.FakeItemEntityHelper;
 import twilightforest.compat.jei.renderers.FakeItemEntityRenderer;
 import twilightforest.compat.jei.subtype.CasketSubtypeInterpreter;
 import twilightforest.compat.jei.util.CrumbleRecipe;
-import twilightforest.compat.jei.util.GrindstoneTravellersRecipesGetter;
 import twilightforest.compat.jei.util.OminousFireRecipe;
 import twilightforest.compat.jei.util.TransformationRecipe;
 import twilightforest.config.TFConfig;
@@ -93,8 +92,8 @@ public class JEICompat implements IModPlugin {
 	@Override
 	public void registerIngredients(IModIngredientRegistration registration) {
 		if (isEmiInstalled()) return;
-		registration.register(ENTITY_TYPE, Collections.emptyList(), new EntityHelper(), new EntityRenderer(16), FakeEntityType.CODEC);
-		registration.register(FAKE_ITEM_ENTITY, Collections.emptyList(), new FakeItemEntityHelper(), new FakeItemEntityRenderer(16), FakeItemEntity.CODEC);
+		registration.register(ENTITY_TYPE, Collections.emptyList(), new EntityHelper(), new EntityRenderer(16));
+		registration.register(FAKE_ITEM_ENTITY, Collections.emptyList(), new FakeItemEntityHelper(), new FakeItemEntityRenderer(16));
 	}
 
 	@Override
@@ -133,7 +132,6 @@ public class JEICompat implements IModPlugin {
 		registration.addRecipes(OminousFireCategory.OMINOUS_FIRE, RecipeViewerConstants.getOminousFireRecipes().stream().map(info -> new OminousFireRecipe(new FakeEntityType(info.input()), new FakeEntityType(info.output()))).toList());
 		registration.addRecipes(CrumbleHornCategory.CRUMBLE_HORN, RecipeViewerConstants.getCrumbleHornRecipes().stream().map(info -> new CrumbleRecipe(info.getFirst(), info.getSecond())).toList());
 		registration.addRecipes(DryingCategory.DRYING, manager.getAllRecipesFor(TFRecipes.DRYING_RECIPE.get()).stream().filter(holder -> !holder.value().getResult().is(TFItems.STALE_BREAD)).map(RecipeHolder::value).toList());
-		registration.addRecipes(RecipeTypes.GRINDSTONE, GrindstoneTravellersRecipesGetter.getRecipes());
 	}
 
 	@Override

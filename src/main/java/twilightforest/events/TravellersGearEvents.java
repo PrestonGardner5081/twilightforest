@@ -337,15 +337,16 @@ public class TravellersGearEvents {
 	}
 
 	private <T> void returnModifierItems(GrindstoneEvent.OnTakeItem event, ResourceKey<TravellersModifier> modifierKey, DataComponentType<T> componentType, Function<T, Stream<ItemStack>> itemStreamExtractor) {
-		if (event.getPlayer() == null)
+		net.minecraft.world.entity.player.Player player = net.minecraft.client.Minecraft.getInstance().player;
+		if (player == null)
 			return;
 
 		getUniqueTravellersGear(event.getTopItem(), event.getBottomItem(), stack ->
-			TravellersModifiersManager.hasTravellersModifier(event.getPlayer().registryAccess(), stack, modifierKey)
+			TravellersModifiersManager.hasTravellersModifier(player.registryAccess(), stack, modifierKey)
 		).map(stack -> stack.get(componentType))
 			.ifPresent(component ->
 				itemStreamExtractor.apply(component)
-					.forEach(itemStack -> ItemHandlerHelper.giveItemToPlayer(event.getPlayer(), itemStack))
+					.forEach(itemStack -> ItemHandlerHelper.giveItemToPlayer(player, itemStack))
 			);
 	}
 

@@ -50,7 +50,6 @@ public class ChiseledCanopyShelfBlockEntity extends ChiseledBookShelfBlockEntity
 		super(pos, state);
 	}
 
-	@Override
 	public boolean isValidBlockState(BlockState state) {
 		return TFBlockEntities.CHISELED_CANOPY_BOOKSHELF.get().isValid(state);
 	}

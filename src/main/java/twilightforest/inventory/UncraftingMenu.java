@@ -244,7 +244,7 @@ public class UncraftingMenu extends RecipeBookMenu<RecipeInput, Recipe<RecipeInp
 						Objects.requireNonNull(result.get(DataComponents.ENCHANTMENTS)).entrySet().forEach(enchantment -> enchants.set(enchantment.getKey(), enchantment.getIntValue()));
 					}
 					//remove any incompatible enchants
-					enchants.removeIf(holder -> !result.supportsEnchantment(holder));
+					enchants.removeIf(holder -> !holder.value().canEnchant(result));
 
 					//remove enchantments and replace with filtered list
 					result.remove(DataComponents.ENCHANTMENTS);

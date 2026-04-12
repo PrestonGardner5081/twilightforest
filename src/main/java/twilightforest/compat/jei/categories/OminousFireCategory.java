@@ -16,6 +16,7 @@ import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SpawnEggItem;
 import net.neoforged.neoforge.common.DeferredSpawnEggItem;
@@ -29,6 +30,7 @@ import twilightforest.init.TFItems;
 
 public class OminousFireCategory implements IRecipeCategory<OminousFireRecipe> {
 	public static final RecipeType<OminousFireRecipe> OMINOUS_FIRE = RecipeType.create(TwilightForestMod.ID, "ominous_fire", OminousFireRecipe.class);
+	private final IDrawable background;
 	private final IDrawable icon;
 	private final IDrawable arrow;
 	private final IDrawable slot;
@@ -36,7 +38,8 @@ public class OminousFireCategory implements IRecipeCategory<OminousFireRecipe> {
 	private final EntityRenderer entityRenderer = new EntityRenderer(32);
 
 	public OminousFireCategory(IGuiHelper helper) {
-		this.arrow = helper.getRecipeArrow();
+		this.background = helper.createBlankDrawable(RecipeViewerConstants.GENERIC_RECIPE_WIDTH, RecipeViewerConstants.GENERIC_RECIPE_HEIGHT);
+		this.arrow = helper.drawableBuilder(ResourceLocation.fromNamespaceAndPath("jei", "textures/jei/atlas/gui/recipe_arrow.png"), 0, 0, 22, 15).setTextureSize(22, 15).build();
 		this.slot = helper.drawableBuilder(TwilightForestMod.getGuiTexture("big_slot.png"), 0, 0, 34, 34).setTextureSize(34, 34).build();
 		this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(TFItems.EXANIMATE_ESSENCE.get()));
 		this.localizedName = Component.translatable("gui.twilightforest.ominous_fire_jei");
@@ -50,6 +53,11 @@ public class OminousFireCategory implements IRecipeCategory<OminousFireRecipe> {
 	@Override
 	public Component getTitle() {
 		return this.localizedName;
+	}
+
+	@Override
+	public IDrawable getBackground() {
+		return this.background;
 	}
 
 	@Override

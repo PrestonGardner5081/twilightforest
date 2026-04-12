@@ -25,7 +25,6 @@ public class SkullCandleBlockEntity extends SkullBlockEntity {
 		this.candleColor = color;
 	}
 
-	@Override
 	public boolean isValidBlockState(BlockState state) {
 		return this.getType().isValid(state);
 	}

@@ -53,7 +53,7 @@ public class TravellersGogglesItem extends TravellersArmorItem {
 				slot.safeInsert(removedStack);
 				this.playRemoveOneSound(player);
 			}
-		} else if (itemstack.canFitInsideContainerItems()) {
+		} else if (itemstack.getItem().canFitInsideContainerItems()) {
 			if (mutableContents.trySwap(SlotAccess.of(slot::getItem, slot::set), player))
 				this.playInsertSound(player);
 		}
@@ -117,7 +117,6 @@ public class TravellersGogglesItem extends TravellersArmorItem {
 		}
 	}
 
-	@Override
 	public boolean isEnderMask(@NotNull ItemStack stack, @NotNull Player player, @NotNull EnderMan enderman) {
 		return TravellersModifiersManager.isModifierActive(player, TravellersModifiersManager.ALL_NIGHT_GOGGLES_MODIFIER);
 	}

@@ -40,6 +40,7 @@ public class TravellersGearModifierExtension implements ICraftingCategoryExtensi
 		if (recipe.isShapeless()) builder.setShapeless();
 		craftingGridHelper.createAndSetInputs(builder, inputs, recipe.getWidth(), recipe.getHeight());
 		// output slot; use RENDER_ONLY to prevent displaying modifier recipes when using the "Show Recipe" key
-		builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 95, 19).setOutputSlotBackground().addItemStacks(outputs);
+		builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 95, 19).addItemStacks(outputs);
+
 	}
 }

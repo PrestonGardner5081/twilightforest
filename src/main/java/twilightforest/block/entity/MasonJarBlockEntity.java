@@ -165,7 +165,7 @@ public class MasonJarBlockEntity extends JarBlockEntity {
 
 		@Override
 		public boolean isItemValid(int slot, ItemStack stack) {
-			return stack.canFitInsideContainerItems();
+			return stack.getItem().canFitInsideContainerItems();
 		}
 
 		@Override

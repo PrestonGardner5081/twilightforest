@@ -156,7 +156,7 @@ public class ItemDisplayContents implements TooltipComponent {
 
 		public boolean trySwap(SlotAccess source, Player player, BiConsumer<ItemStack, Player> remainder) {
 			ItemStack slottedStack = source.get();
-			if (slottedStack.isEmpty() || !slottedStack.canFitInsideContainerItems()) {
+			if (slottedStack.isEmpty() || !slottedStack.getItem().canFitInsideContainerItems()) {
 				return false;
 			}
 

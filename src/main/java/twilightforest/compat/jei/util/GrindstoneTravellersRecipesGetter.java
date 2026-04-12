@@ -1,27 +1,9 @@
 package twilightforest.compat.jei.util;
 
-import mezz.jei.api.recipe.vanilla.IJeiGrindstoneRecipe;
-import mezz.jei.library.plugins.vanilla.grindstone.GrindstoneRecipe;
-import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.ItemStack;
-import twilightforest.compat.common.DefaultModifiedTravellersGearGetter;
-
 import java.util.List;
 
+// Grindstone recipe registration is not available in JEI 19.8.x (MC 1.21.0)
+// This class is kept as a stub to avoid breaking other references.
 public abstract class GrindstoneTravellersRecipesGetter {
-	public static List<IJeiGrindstoneRecipe> getRecipes() {
-		return DefaultModifiedTravellersGearGetter.getDefaultModifiedTravellersGear(Minecraft.getInstance().level.registryAccess())
-			.stream()
-			.map(GrindstoneTravellersRecipesGetter::getGrindstoneRecipe)
-			.toList();
-	}
-
-	private static IJeiGrindstoneRecipe getGrindstoneRecipe(ItemStack modifiedStack) {
-		return new GrindstoneRecipe(
-			List.of(modifiedStack),
-			List.of(ItemStack.EMPTY),
-			List.of(DefaultModifiedTravellersGearGetter.getDemodifiedStack(modifiedStack)),
-			0, 0, null
-		);
-	}
+	// Body removed: RecipeTypes.GRINDSTONE and GrindstoneRecipe do not exist in JEI 19.8.x
 }

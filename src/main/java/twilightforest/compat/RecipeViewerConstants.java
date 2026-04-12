@@ -3,7 +3,6 @@ package twilightforest.compat;
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.datafixers.util.Pair;
-import mezz.jei.library.plugins.vanilla.crafting.JeiShapedRecipe;
 import net.minecraft.ChatFormatting;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -216,17 +215,11 @@ public class RecipeViewerConstants {
 		if (recipe instanceof ShapedRecipe shapedRecipe) {
 			return shapedRecipe.getWidth();
 		}
-		if (recipe instanceof JeiShapedRecipe shapedRecipe) {
-			return shapedRecipe.getWidth();
-		}
 		return 0;
 	}
 
 	public static int getRecipeHeight(CraftingRecipe recipe) {
 		if (recipe instanceof ShapedRecipe shapedRecipe) {
-			return shapedRecipe.getHeight();
-		}
-		if (recipe instanceof JeiShapedRecipe shapedRecipe) {
 			return shapedRecipe.getHeight();
 		}
 		return 0;

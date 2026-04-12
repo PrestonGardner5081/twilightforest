@@ -2,9 +2,7 @@ package twilightforest.compat.jei.extension;
 
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.ingredient.ICraftingGridHelper;
-import mezz.jei.api.gui.ingredient.IRecipeSlotDrawable;
 import mezz.jei.api.recipe.IFocusGroup;
-import mezz.jei.api.recipe.RecipeIngredientRole;
 import mezz.jei.api.recipe.category.extensions.vanilla.crafting.ICraftingCategoryExtension;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -29,12 +27,5 @@ public class MoonwormQueenExtension implements ICraftingCategoryExtension<Moonwo
 
 		craftingGridHelper.createAndSetInputs(builder, inputs, 0, 0);
 		craftingGridHelper.createAndSetOutputs(builder, List.of(TFItems.MOONWORM_QUEEN.toStack()));
-	}
-
-	@Override
-	public void onDisplayedIngredientsUpdate(RecipeHolder<MoonwormQueenRepairRecipe> recipeHolder, List<IRecipeSlotDrawable> recipeSlots, IFocusGroup focuses) {
-		List<ItemStack> berries = recipeSlots.subList(2, 5).stream().map(drawable -> drawable.getDisplayedItemStack().orElse(ItemStack.EMPTY)).filter(stack -> !stack.isEmpty()).toList();
-
-		recipeSlots.getFirst().createDisplayOverrides().addItemStack(RecipeViewerConstants.MOONWORM_QUEEN_LIST.get(berries.size()));
 	}
 }

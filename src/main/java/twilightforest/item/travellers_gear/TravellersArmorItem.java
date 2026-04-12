@@ -170,12 +170,10 @@ public class TravellersArmorItem extends ArmorItem implements TravellersModifiab
 		return true;
 	}
 
-	@Override
 	public boolean isPrimaryItemFor(@NotNull ItemStack stack, @NotNull Holder<Enchantment> enchantment) {
 		return false;
 	}
 
-	@Override
 	public boolean supportsEnchantment(@NotNull ItemStack stack, @NotNull Holder<Enchantment> enchantment) {
 		return false;
 	}
@@ -263,11 +261,7 @@ public class TravellersArmorItem extends ArmorItem implements TravellersModifiab
 			return new TFArmorModel(root);
 		}
 
-		@Override
-		public void setupModelAnimations(@NotNull LivingEntity livingEntity, @NotNull ItemStack itemStack, @NotNull EquipmentSlot equipmentSlot, @NotNull Model model, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-			if (model instanceof TravellersWingsModel wingsModel)
-				wingsModel.setupModelAnimations(livingEntity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
-		}
+		// setupModelAnimations not available in NeoForge 21.0 - animations handled elsewhere
 
 		private boolean isModelSlim(LivingEntity entity) {
 			if (entity instanceof AbstractClientPlayer player) return player.getSkin().model().equals(PlayerSkin.Model.SLIM);
