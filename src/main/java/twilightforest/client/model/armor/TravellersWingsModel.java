@@ -167,6 +167,11 @@ public class TravellersWingsModel extends HumanoidModel<LivingEntity> {
 		);
 	}
 
+	@Override
+	public void setupAnim(LivingEntity entity, float f, float f1, float ageInTicks, float netHeadYaw, float headPitch) {
+		this.setupModelAnimations(entity, f, f1, ageInTicks, netHeadYaw, headPitch);
+	}
+
 	public void setupModelAnimations(LivingEntity entity, float f, float f1, double ageInTicks, float netHeadYaw, float headPitch) {
 		this.bodyParts().forEach(modelPart -> modelPart.getAllParts().forEach(ModelPart::resetPose));
 		super.setupAnim(entity, f, f1, (float) ageInTicks, netHeadYaw, headPitch);
