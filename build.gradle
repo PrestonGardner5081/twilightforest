@@ -41,6 +41,14 @@ shadowJar {
 	archiveClassifier.set('universal')
 	configurations = [project.configurations.shade]
 	relocate 'tamaized.beanification', "${project.mod_id}.beanification"
+	// Overwrite the shaded beanification classes with our local patches (see patches/beanification/README.md).
+	doLast {
+		ant.jar(destfile: archiveFile.get().asFile, update: true) {
+			fileset(dir: "${projectDir}/patches/beanification") {
+				include(name: "twilightforest/beanification/**/*.class")
+			}
+		}
+	}
 }
 
 jar {
